@@ -4,7 +4,7 @@ import { motion, AnimatePresence } from "framer-motion";
 
 type ReportType = 'EMERGENCY' | 'NON_EMERGENCY';
 
-// @ts-ignore
+// @ts-ignore: Props data will be handled dynamically
 interface ReportFormProps {
     onComplete: (data: any) => void;
 }

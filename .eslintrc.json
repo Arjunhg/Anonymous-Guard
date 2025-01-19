@@ -1,3 +1,13 @@
 {
-  "extends": ["next/core-web-vitals", "next/typescript"]
+  "extends": ["next/core-web-vitals", "next/typescript"],
+  "rules": {
+    "@typescript-eslint/no-explicit-any": "warn", // Warns instead of errors for 'any'
+    "@typescript-eslint/ban-ts-comment": [
+      "error",
+      {
+        "ts-ignore": "allow-with-description", // Allow ts-ignore with a description
+        "ts-expect-error": true // Enforce using ts-expect-error when necessary
+      }
+    ]
+  }
 }

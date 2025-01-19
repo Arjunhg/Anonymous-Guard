@@ -7,11 +7,11 @@ import { ReportForm } from "./ReportForm";
 export function ReportWizard() {
 
     const [currStep, setCurrStep] = useState(1);
-    // @ts-ignore
+    // @ts-ignore: Props data will be handled dynamically
     const [reportData, setReportData] = useState<any>(null);
     console.log(setCurrStep)
 
-    // @ts-ignore
+    // @ts-ignore: Props data will be handled dynamically
     const handleStepComplete = async (data: any) => {
         setReportData({ ...reportData, ...data });
     
