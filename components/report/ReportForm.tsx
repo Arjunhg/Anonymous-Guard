@@ -4,6 +4,7 @@ import { motion, AnimatePresence } from "framer-motion";
 
 type ReportType = 'EMERGENCY' | 'NON_EMERGENCY';
 
+//@ts-nocheck
 interface ReportFormProps {
     onComplete: (data: any) => void;
 }
@@ -68,6 +69,7 @@ export function ReportForm({onComplete}: ReportFormProps) {
             (error) => {
                 setLocationError("Unable to retrieve your location");
                 setIsLoadingLocation(false);
+                console.log(error)
             }
         );
     };

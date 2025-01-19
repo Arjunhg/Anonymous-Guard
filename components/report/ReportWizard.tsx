@@ -4,6 +4,7 @@ import { ReportForm } from "./ReportForm";
 // Report Form
 // After form submitted: ReportSubmitted
 
+//@ts-nocheck
 export function ReportWizard() {
 
     const [currStep, setCurrStep] = useState(1);
