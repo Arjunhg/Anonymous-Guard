@@ -61,3 +61,5 @@
 --> A little bit change of mind. I was working with Navbar and had a basic setup with basic design. Decided to gave "Improve the styling of navbar.tsx component. Make it better at responsiveness at different screen size. Also include some animation effects." prompt to copilot and it went crazy. I mean it did a pretty decent job for a navbar. Hope paid off :) . 4:56PM 1/19/2025. Time to deploy the complete navbar.
 
 --> Time: 6:47PM IST 1/19/2025. Copilot is doing pretty amazing job as of now. Had a blueprint for home page and used the same text as navbar to style and animate it(Some of it even I don't understant :)). 
+
+--> Created Basic infrastructure for Report Page, Report Wizard, Report Form with prompt: "Now that we have successfully created our landing page let's move on to submit-report endpoint. It must include two choice Emergency and Non_Emergency. Based on these two choices enable the css for respective choice. Create a simple form with file input that can help user submit the incident details(Add Neccessary information regarding the incident to include in the form)." : As of 8:10PM IST 1/19/2025
