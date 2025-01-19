@@ -1,0 +1,59 @@
+--> Initial Prompt ( GPT 4o ):
+
+    - I am building an AI application with modern tech stack. It is part of the GIthub Co-Pilot One Day challenge where we are required to create new innovative solution that will be helpful for real life using co-pilot. I have project description that goes as follows:
+    Being a developer it's important we contribute towards the betterment of the society though usefull application. So, I have decided to built an application that will allow people to report crime and incidents anonymously keeping their identity safe. The application will have Submit Report, Track Report and an admin dashboard(Authentication Required). The user can submit image of the report based on its gravity, Emergency or non Emergency situation. Once submitted we can leverage gemini API to extract information regarding it and finally submit the report for tracking.
+
+    Provide complete structure and flow of this application. Also in the end give this project a justifiable name.
+
+    - Output:
+
+        crime-reporting-app
+        ├── public
+        │   ├── favicon.ico
+        │   └── images
+        │       └── example.png
+        ├── src
+        │   ├── components
+        │   │   ├── SubmitReport.tsx
+        │   │   ├── TrackReport.tsx
+        │   │   └── AdminDashboard.tsx
+        │   ├── pages
+        │   │   ├── api
+        │   │   │   └── submitReport.ts
+        │   │   ├── index.tsx
+        │   │   ├── submit-report.tsx
+        │   │   ├── track-report.tsx
+        │   │   └── admin
+        │   │       └── dashboard.tsx
+        │   ├── services
+        │   │   ├── api.ts
+        │   │   └── auth.ts
+        │   ├── utils
+        │   │   └── geminiAPI.ts
+        │   ├── styles
+        │   │   ├── globals.css
+        │   │   └── Home.module.css
+        │   └── types
+        │       └── index.ts
+        ├── .eslintrc.json
+        ├── .prettierrc
+        ├── next.config.js
+        ├── package.json
+        ├── tsconfig.json
+        └── README.md
+
+
+    - Suggested Name: AnonGuard (Changed to Anonymous Guard)
+
+--> A little bit of fun with description descrepency with me and co-pilot
+
+    Provide better description
+
+    Make it short and catchy
+
+    Its good but sound simple. We are talking about crime here.
+
+    Nah, it doesn't provide terror. Something like "Law Enforcement Crimes Reporting", better than you lol.
+
+
+-->  TBH copilot messed up my layout.tsx (RIP). It did provide some code but most of it was not relevant, like in rootlayout it didn't even include the html tag, gradient class was in the wrong div and other things. This is the case of of 1:11PM IST 1/19/2025. I hope it gets better as we move furthur into the application.
