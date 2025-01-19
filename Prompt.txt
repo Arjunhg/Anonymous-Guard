@@ -57,3 +57,5 @@
 
 
 -->  TBH copilot messed up my layout.tsx (RIP). It did provide some code but most of it was not relevant, like in rootlayout it didn't even include the html tag, gradient class was in the wrong div and other things. This is the case of of 1:11PM IST 1/19/2025. I hope it gets better as we move furthur into the application.
+
+--> A little bit change of mind. I was working with Navbar and had a basic setup with basic design. Decided to gave "Improve the styling of navbar.tsx component. Make it better at responsiveness at different screen size. Also include some animation effects." prompt to copilot and it went crazy. I mean it did a pretty decent job for a navbar. Hope paid off :) . 4:56PM 1/19/2025. Time to deploy the complete navbar.
