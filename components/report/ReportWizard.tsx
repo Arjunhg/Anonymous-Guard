@@ -4,13 +4,14 @@ import { ReportForm } from "./ReportForm";
 // Report Form
 // After form submitted: ReportSubmitted
 
-//@ts-nocheck
 export function ReportWizard() {
 
     const [currStep, setCurrStep] = useState(1);
+    // @ts-ignore
     const [reportData, setReportData] = useState<any>(null);
     console.log(setCurrStep)
 
+    // @ts-ignore
     const handleStepComplete = async (data: any) => {
         setReportData({ ...reportData, ...data });
     

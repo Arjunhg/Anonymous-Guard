@@ -4,7 +4,7 @@ import { motion, AnimatePresence } from "framer-motion";
 
 type ReportType = 'EMERGENCY' | 'NON_EMERGENCY';
 
-//@ts-nocheck
+// @ts-ignore
 interface ReportFormProps {
     onComplete: (data: any) => void;
 }
