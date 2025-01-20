@@ -73,3 +73,5 @@
 --> "Don't change the core functionality but provide a better more optimsed version of this code which handles all the edge cases." Prompt provided to copilot for handling edge cases and common pitfall in app\api\reports\create\route.ts
 
 --> So while deploying on vercel got into some error and it took a while but finally got it sorted out. Turn out need to add "postinstall": "prisma generate" and "build": "prisma generate && next build", while deploying. Multiple file access of co-pilot :).
+
+--> Lost track of time so here it is: 9:36 AM IST 1/20/2025 (3 hours and 52 minutes till D-Time, and still got lot to do, rip/). But besides that I have noticed that copilot works seamlessly with claude by generating really good animation and css. For the backend part though I would consider user copilot with gpt (Still there will be some error, irrevalant code, etc.)

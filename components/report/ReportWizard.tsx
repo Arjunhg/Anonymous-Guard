@@ -1,6 +1,7 @@
 "use client";
 import { useState } from "react";
 import { ReportForm } from "./ReportForm";
+import { ReportFormCompleted } from "./ReportFormCompleted";
 // Report Form
 // After form submitted: ReportSubmitted
 
@@ -29,9 +30,9 @@ export function ReportWizard() {
                 currStep === 1 && <ReportForm onComplete={handleStepComplete}/>
             }
             {/* after creating api rouetes */}
-            {/* {
-                currStep
-            } */}
+            {
+                currStep === 2 && <ReportFormCompleted data={reportData} onComplete={handleStepComplete}/>
+            }
         </div>
     )
 }
