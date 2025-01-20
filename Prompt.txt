@@ -75,3 +75,31 @@
 --> So while deploying on vercel got into some error and it took a while but finally got it sorted out. Turn out need to add "postinstall": "prisma generate" and "build": "prisma generate && next build", while deploying. Multiple file access of co-pilot :).
 
 --> Lost track of time so here it is: 9:36 AM IST 1/20/2025 (3 hours and 52 minutes till D-Time, and still got lot to do, rip/). But besides that I have noticed that copilot works seamlessly with claude by generating really good animation and css. For the backend part though I would consider user copilot with gpt (Still there will be some error, irrevalant code, etc.)
+
+--> Just for better undertanding, asked copilot for the Authentication flow with prompt:
+
+    this is what I got:
+
+    -
+    A[User] -->|Register| B[/api/auth/signup]
+    A -->|Login| C[/api/auth/[...nextauth]]
+    
+    B -->|1. Validate Input| D[Signup Process]
+    D -->|2. Hash Password| E[bcrypt]
+    D -->|3. Create User| F[(Database)]
+    
+    C -->|1. Check Credentials| G[NextAuth]
+    G -->|2. Verify User| F
+    G -->|3. Compare Password| E
+    G -->|4. Generate Token| H[JWT]
+    
+    H -->|Set Cookie| I[Browser Session]
+    I -->|Authenticate| J[Protected Routes]
+    
+    K[Session Management] -->|Verify Token| H
+    K -->|Update Session| I
+    
+    L[Auth Middleware] -->|Check Session| I
+    L -->|Guard Routes| 
+
+    - Let me know if you guys believe this is correct or not.
