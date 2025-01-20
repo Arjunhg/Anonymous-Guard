@@ -4,6 +4,7 @@ import './globals.css';
 // import navbar
 import Navbar from "@/components/Navbar";
 // import providers
+import {Providers} from './providers'; 
 
 const inter = Inter({
   subsets: ["cyrillic-ext", "greek"],
@@ -32,7 +33,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 
           {/* Main div: Providers wrapped around here */}
           <div className="pt-16">
-            {children}
+            <Providers>
+              {children}
+            </Providers>
           </div>
         </div>
       </body>

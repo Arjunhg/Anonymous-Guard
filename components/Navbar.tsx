@@ -53,7 +53,7 @@ export default function Navbar(){
 
                         {/* Main Navigation */}
                         <div className="hidden md:flex items-center space-x-8">
-                            {['submit-report', 'track-report', 'resources'].map((item) => (
+                            {['submit-report', 'track-report'].map((item) => (
                                 <Link
                                     key={item}
                                     href={`/${item}`}

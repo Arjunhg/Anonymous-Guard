@@ -43,7 +43,7 @@ export function ReportForm({onComplete}: ReportFormProps) {
     const [locationError, setLocationError] = useState<string | null>(null);
     const [isLoadingLocation, setIsLoadingLocation] = useState(false);
 
-    console.log(onComplete, setImage, setIsAnalyzing, setIsSubmitting);
+    // console.log(onComplete, setImage, setIsAnalyzing, setIsSubmitting);
 
     const getCurrentLocation = () => {
         setIsLoadingLocation(true);
@@ -70,7 +70,7 @@ export function ReportForm({onComplete}: ReportFormProps) {
             (error) => {
                 setLocationError("Unable to retrieve your location");
                 setIsLoadingLocation(false);
-                console.log(error)
+                console.error(error)
             }
         );
     };
@@ -78,7 +78,7 @@ export function ReportForm({onComplete}: ReportFormProps) {
     // after db creation
     const handleImageUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
 
-        console.log("Hit handleImageUpload");
+        // console.log("Hit handleImageUpload");
 
         const file = e.target.files?.[0];
         if(!file) return;
@@ -87,13 +87,13 @@ export function ReportForm({onComplete}: ReportFormProps) {
 
         try {
             // Use gemini api to analyze image
-            console.log("Inside try block of handleImageUpload in ReportForm.tsx");
+            // console.log("Inside try block of handleImageUpload in ReportForm.tsx");
             const base64 = await new Promise((resolve) => {
                 const reader = new FileReader();
                 reader.onload = () => resolve(reader.result);
                 reader.readAsDataURL(file);
             }) //create base64 image and sent to gemini api
-            console.log("base64: ", base64);
+            // console.log("base64: ", base64);
 
             const response = await fetch("/api/analyze-image", {
                 method: "POST",
@@ -103,10 +103,10 @@ export function ReportForm({onComplete}: ReportFormProps) {
                 body: JSON.stringify({ image: base64 }),
             })
 
-            console.log("response from gemini api: ", response);
+            // console.log("response from gemini api: ", response);
 
             const data = await response.json();
-            console.log("data from gemini api: ", data);
+            // console.log("data from gemini api: ", data);
 
             if(data.title && data.description && data.reportType){
                 setFormData((prev) => ({
@@ -116,8 +116,8 @@ export function ReportForm({onComplete}: ReportFormProps) {
                     specificType: data.reportType,
                 }));
                 setImage(base64 as string);
-                console.log("formData: ", formData);
-                console.log("base64 image after gemini api: ", image);
+                // console.log("formData: ", formData);
+                // console.log("base64 image after gemini api: ", image);
             }
         } catch (error) {
             console.error("Error analyzing image: ", error);
@@ -140,7 +140,7 @@ export function ReportForm({onComplete}: ReportFormProps) {
     },[]);
 
     const handleSubmit = async(e: React.FormEvent) => {
-        console.log("Hit handleSubmit");
+        // console.log("Hit handleSubmit");
         e.preventDefault();
         setIsSubmitting(true);
 
@@ -158,7 +158,7 @@ export function ReportForm({onComplete}: ReportFormProps) {
                 image: image,
                 status: "PENDING",
             }
-            console.log("reportData inside handleSubmit: ", reportData);
+            // console.log("reportData inside handleSubmit: ", reportData);
 
             const res = await fetch("/api/reports/create", {
                 method: "POST",
@@ -167,10 +167,10 @@ export function ReportForm({onComplete}: ReportFormProps) {
                 },
                 body: JSON.stringify(reportData),
             })
-            console.log("res inside handleSubmit: ", res);
+            // console.log("res inside handleSubmit: ", res);
 
             const result = await res.json();
-            console.log("result inside handleSubmit: ", result);
+            // console.log("result inside handleSubmit: ", result);
 
             if (!res.ok) {
                 throw new Error(result.error || "Failed to submit report");
@@ -178,7 +178,7 @@ export function ReportForm({onComplete}: ReportFormProps) {
 
             onComplete(result);
         } catch (error) {
-            console.log("Error submitting report: ", error);
+            console.error("Error submitting report: ", error);
         } finally {
             setIsSubmitting(false);
         }

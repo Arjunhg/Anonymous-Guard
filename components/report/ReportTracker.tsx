@@ -192,20 +192,25 @@ export function ReportTracker() {
 
                 <div className="grid gap-4">
                   <motion.div 
-                    className="flex justify-between items-center p-3 rounded-lg bg-white/5"
+                    className="flex flex-col space-y-2"
                     initial={{ opacity: 0, x: -20 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: 0.7 }}
                   >
-                    <span className="text-zinc-400">Status</span>
-                    <span
-                      className={`font-medium ${getStatusColor(
-                        reportDetails.status
-                      )} 
-                        px-3 py-1 rounded-full bg-white/5`}
-                    >
-                      {reportDetails.status.toUpperCase()}
-                    </span>
+                    <div className="flex justify-between items-center p-3 rounded-lg bg-white/5">
+                      <span className="text-zinc-400">Status</span>
+                      <span
+                        className={`font-medium ${getStatusColor(
+                          reportDetails.status
+                        )} 
+                          px-3 py-1 rounded-full bg-white/5`}
+                      >
+                        {reportDetails.status.toUpperCase()}
+                      </span>
+                    </div>
+                    <p className="text-sm text-red-400 italic px-3">
+                      Status will be updated when admin verifies it.
+                    </p>
                   </motion.div>
 
                   <motion.div 

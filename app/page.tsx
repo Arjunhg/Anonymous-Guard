@@ -1,8 +1,11 @@
 'use client';
 import Link from "next/link";
 import { useEffect } from "react";
+import { useSession } from "next-auth/react";
 
-export default function Home(){
+export default function Home() {
+  const { data: session, status } = useSession();
+  
   // Add fade-in effect on scroll
   useEffect(() => {
     const observerOptions = {
@@ -93,6 +96,32 @@ export default function Home(){
             <Link href={"/how-it-works"}>
               <button className="flex h-12 items-center justify-center gap-2 rounded-xl bg-white/5 px-8 text-sm font-medium text-white ring-1 ring-inset ring-white/10 transition-all hover:bg-white/10">
                 How it Works
+              </button>
+            </Link>
+
+            {/* New Admin Button */}
+            <Link href={status === "authenticated" ? "/dashboard" : "/auth/signin"}>
+              <button className="flex h-12 items-center justify-center gap-2 
+                rounded-xl bg-zinc-900/80 px-8 text-sm font-medium text-zinc-400
+                ring-1 ring-inset ring-zinc-800 transition-all 
+                hover:bg-zinc-800 hover:text-zinc-300 hover:ring-zinc-700">
+                {status === "authenticated" ? (
+                  <>
+                    <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} 
+                        d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+                    </svg>
+                    <span>Admin Dashboard</span>
+                  </>
+                ) : (
+                  <>
+                    <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} 
+                        d="M5.121 17.804A13.937 13.937 0 0112 16c2.5 0 4.847.655 6.879 1.804M15 10a3 3 0 11-6 0 3 3 0 016 0zm6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                    <span>Admin Sign In</span>
+                  </>
+                )}
               </button>
             </Link>
           </div>
