@@ -31,6 +31,7 @@ export default function SignIn() {
       }
     } catch (error) {
       setError("An error occurred during sign in");
+      console.error(error);
     } finally {
       setIsLoading(false);
     }
@@ -167,7 +168,7 @@ export default function SignIn() {
               className="mt-6 text-center space-y-4"
             >
               <Link href="/auth/signup" className="text-sky-400 hover:text-sky-300 text-sm transition-colors">
-                Don't have an account? Sign up
+                Don&apos;t have an account? Sign up
               </Link>
             </motion.div>
           </div>
