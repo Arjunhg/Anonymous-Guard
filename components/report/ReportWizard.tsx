@@ -8,7 +8,7 @@ export function ReportWizard() {
 
     const [currStep, setCurrStep] = useState(1);
     // @ts-ignore: Props data will be handled dynamically
-    const [reportData, setReportData] = useState<any>anal(null);
+    const [reportData, setReportData] = useState<any>(null);
     console.log(setCurrStep)
 
     // @ts-ignore: Props data will be handled dynamically
@@ -28,8 +28,8 @@ export function ReportWizard() {
             {
                 currStep === 1 && <ReportForm onComplete={handleStepComplete}/>
             }
-            {/* after creating api rouetes
-            {
+            {/* after creating api rouetes */}
+            {/* {
                 currStep
             } */}
         </div>
