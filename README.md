@@ -1,4 +1,4 @@
-# AnonGuard - Anonymous Crime Reporting Platform
+# AnonGuard - Anonymous Reporting Platform
 
 [![Next.js](https://img.shields.io/badge/next.js-000000?style=for-the-badge&logo=nextdotjs&logoColor=white)](https://nextjs.org/)
 [![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
