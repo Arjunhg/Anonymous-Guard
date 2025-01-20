@@ -1,4 +1,3 @@
-// @ts-nocheck
 import { AuthOptions } from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 import prisma from "./prisma";
@@ -48,12 +47,14 @@ export const authOptions: AuthOptions = {
   callbacks: {
     async jwt({ token, user }) {
       if (user) {
+        // @ts-ignore: Add custom property to token
         token.role = user.role;
       }
       return token;
     },
     async session({ session, token }) {
       if (session?.user) {
+        // @ts-ignore: Add custom property to session
         session.user.role = token.role;
       }
       return session;

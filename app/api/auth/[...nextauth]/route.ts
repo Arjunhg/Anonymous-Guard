@@ -1,4 +1,4 @@
-// @ts-nocheck
+
 import { PrismaAdapter } from "@auth/prisma-adapter";
 import NextAuth from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
@@ -50,12 +50,14 @@ const handler = NextAuth({
   callbacks: {
     async jwt({ token, user }) {
       if (user) {
+        // @ts-ignore: Add custom property to token
         token.role = user.role;
       }
       return token;
     },
     async session({ session, token }) {
       if (session?.user) {
+        // @ts-ignore: Add custom property to session
         session.user.role = token.role;
       }
       return session;
