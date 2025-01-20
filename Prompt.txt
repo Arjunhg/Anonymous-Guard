@@ -71,3 +71,5 @@
 --> Updated ReportForm.tsx with handleUpload function (others wrote myself). 
 
 --> "Don't change the core functionality but provide a better more optimsed version of this code which handles all the edge cases." Prompt provided to copilot for handling edge cases and common pitfall in app\api\reports\create\route.ts
+
+--> So while deploying on vercel got into some error and it took a while but finally got it sorted out. Turn out need to add "postinstall": "prisma generate" and "build": "prisma generate && next build", while deploying. Multiple file access of co-pilot :).
