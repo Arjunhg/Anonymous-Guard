@@ -1,36 +1,72 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# AnonGuard - Anonymous Crime Reporting Platform
 
-## Getting Started
+[![Next.js](https://img.shields.io/badge/next.js-000000?style=for-the-badge&logo=nextdotjs&logoColor=white)](https://nextjs.org/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
+[![Prisma](https://img.shields.io/badge/Prisma-3982CE?style=for-the-badge&logo=Prisma&logoColor=white)](https://www.prisma.io/)
+[![Vercel](https://img.shields.io/badge/Vercel-000000?style=for-the-badge&logo=vercel&logoColor=white)](https://vercel.com/)
 
-First, run the development server:
+AnonGuard is a secure, anonymous crime reporting platform that empowers citizens to report incidents while protecting their identity. Built with modern technologies and AI-powered analysis.
+
+## 🚀 Features
+
+- 🔒 **Anonymous Reporting**: Submit reports without revealing identity
+- 🤖 **AI Analysis**: Automatic incident analysis using Google Gemini API
+- 📍 **Location Tracking**: Optional geolocation support
+- 🚨 **Emergency Categories**: Distinguish between emergency and non-emergency reports
+- 📊 **Admin Dashboard**: Secure interface for authorities
+- 🔍 **Report Tracking**: Monitor report status
+
+## 🛠️ Tech Stack
+
+- Next.js 14 (App Router)
+- TypeScript
+- Prisma ORM
+- PostgreSQL (Neon)
+- Google Gemini API
+- NextAuth.js
+- Framer Motion
+- Tailwind CSS
+
+## 📦 Installation
 
 ```bash
+# Clone repository
+git clone https://github.com/Arjunhg/Anonymous-Guard
+
+# Install dependencies
+npm install
+
+# Set up environment variables
+.env
+    DATABASE_URL=your_postgresql_url
+    GEMINI_API_KEY=your_gemini_api_key
+    NEXTAUTH_SECRET=your_secret
+    NEXTAUTH_URL=http://localhost:3000
+
+# Generate Prisma client
+npx prisma generate
+
+# Run database migrations
+npx prisma migrate dev
+
+# Start development server
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+# 📱 Usage
+Visit http://localhost:3000
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Choose report type (Emergency/Non-Emergency)
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Upload incident image (optional)
 
-## Learn More
+Fill report details
 
-To learn more about Next.js, take a look at the following resources:
+Submit and receive tracking ID
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+# 👮 Admin Access
+Login at /auth/signin
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Access dashboard at /dashboard
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+View and manage reports
