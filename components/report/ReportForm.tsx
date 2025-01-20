@@ -1,6 +1,7 @@
 "use client";
-import { useState} from "react";
+import { useCallback, useState} from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import crypto from 'crypto';
 
 type ReportType = 'EMERGENCY' | 'NON_EMERGENCY';
 
@@ -74,9 +75,119 @@ export function ReportForm({onComplete}: ReportFormProps) {
         );
     };
 
+    // after db creation
+    const handleImageUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
+
+        console.log("Hit handleImageUpload");
+
+        const file = e.target.files?.[0];
+        if(!file) return;
+
+        setIsAnalyzing(true);
+
+        try {
+            // Use gemini api to analyze image
+            console.log("Inside try block of handleImageUpload in ReportForm.tsx");
+            const base64 = await new Promise((resolve) => {
+                const reader = new FileReader();
+                reader.onload = () => resolve(reader.result);
+                reader.readAsDataURL(file);
+            }) //create base64 image and sent to gemini api
+            console.log("base64: ", base64);
+
+            const response = await fetch("/api/analyze-image", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({ image: base64 }),
+            })
+
+            console.log("response from gemini api: ", response);
+
+            const data = await response.json();
+            console.log("data from gemini api: ", data);
+
+            if(data.title && data.description && data.reportType){
+                setFormData((prev) => ({
+                    ...prev,
+                    title: data.title,
+                    description: data.description,
+                    specificType: data.reportType,
+                }));
+                setImage(base64 as string);
+                console.log("formData: ", formData);
+                console.log("base64 image after gemini api: ", image);
+            }
+        } catch (error) {
+            console.error("Error analyzing image: ", error);
+        } finally {
+            setIsAnalyzing(false);
+        }
+    };
+
+    // generate hash using crypto function
+    const generateReportId = useCallback(() => {
+        const timestamp = Date.now().toString();
+        const randomBytes = crypto.randomBytes(16).toString("hex");
+        const combinedString = `${timestamp}-${randomBytes}`;
+        
+        return crypto
+            .createHash("sha256")
+            .update(combinedString)
+            .digest("hex")
+            .slice(0, 10);
+    },[]);
+
+    const handleSubmit = async(e: React.FormEvent) => {
+        console.log("Hit handleSubmit");
+        e.preventDefault();
+        setIsSubmitting(true);
+
+        try {
+            
+            const reportData = {
+                reportId: generateReportId(),
+                type: formData.incidentType,
+                specificType: formData.specificType,
+                title: formData.title,
+                description: formData.description,
+                location: formData.location,
+                latitude: coordinates.latitude,
+                longitude: coordinates.longitude,
+                image: image,
+                status: "PENDING",
+            }
+            console.log("reportData inside handleSubmit: ", reportData);
+
+            const res = await fetch("/api/reports/create", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify(reportData),
+            })
+            console.log("res inside handleSubmit: ", res);
+
+            const result = await res.json();
+            console.log("result inside handleSubmit: ", result);
+
+            if (!res.ok) {
+                throw new Error(result.error || "Failed to submit report");
+            }
+
+            onComplete(result);
+        } catch (error) {
+            console.log("Error submitting report: ", error);
+        } finally {
+            setIsSubmitting(false);
+        }
+    }
+
     return (
         <motion.form 
             className="space-y-8"
+            onSubmit={handleSubmit}
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
@@ -162,7 +273,7 @@ export function ReportForm({onComplete}: ReportFormProps) {
                             <input
                                 type="file"
                                 accept="image/*"
-                                // onChange={handleImageUpload}
+                                onChange={handleImageUpload}
                                 className="hidden"
                                 id="image-upload"
                             />
