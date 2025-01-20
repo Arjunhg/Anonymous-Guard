@@ -69,3 +69,5 @@
 --> Started off with a pretty good Initial code setup for database. The prompt I provided to co-pilot for database: "We need to create a prisma schema for our application. Analyze the files we created up until now and create a prisma schema accordingly." : 
 
 --> Updated ReportForm.tsx with handleUpload function (others wrote myself). 
+
+--> "Don't change the core functionality but provide a better more optimsed version of this code which handles all the edge cases." Prompt provided to copilot for handling edge cases and common pitfall in app\api\reports\create\route.ts
