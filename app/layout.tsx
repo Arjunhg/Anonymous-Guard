@@ -4,7 +4,8 @@ import './globals.css';
 // import navbar
 import Navbar from "@/components/Navbar";
 // import providers
-import {Providers} from './providers'; 
+import {Providers} from './providers';
+import { Analytics } from "@vercel/analytics/react" 
 
 const inter = Inter({
   subsets: ["cyrillic-ext", "greek"],
@@ -35,6 +36,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <div className="pt-16">
             <Providers>
               {children}
+              <Analytics />
             </Providers>
           </div>
         </div>

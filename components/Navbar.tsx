@@ -117,7 +117,7 @@ export default function Navbar(){
                 transform transition-transform duration-300 ease-in-out md:hidden
                 ${isMobileMenuOpen ? 'translate-y-0' : '-translate-y-full'}`}>
                 <div className="p-4 space-y-4">
-                    {['submit-report', 'track-report', 'resources', 'contact'].map((item) => (
+                    {['submit-report', 'track-report', 'contact'].map((item) => (
                         <Link
                             key={item}
                             href={`/${item}`}
