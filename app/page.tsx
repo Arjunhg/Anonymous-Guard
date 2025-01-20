@@ -4,7 +4,8 @@ import { useEffect } from "react";
 import { useSession } from "next-auth/react";
 
 export default function Home() {
-  const { data: _, status } = useSession();
+  const { data: session, status } = useSession();
+  console.log(session);
   
   // Add fade-in effect on scroll
   useEffect(() => {
