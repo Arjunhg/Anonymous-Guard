@@ -22,32 +22,29 @@ export async function GET(req: Request) {
       ...(type && { type }),
     };
 
-    // Add timeout and retry logic
-    const reports = await Promise.race([
-      prisma.report.findMany({
-        where,
-        orderBy: {
-          createdAt: "desc",
-        },
-        select: {
-          id: true,
-          reportId: true,
-          type: true,
-          title: true,
-          description: true,
-          location: true,
-          latitude: true,
-          longitude: true,
-          image: true,
-          status: true,
-          createdAt: true,
-          updatedAt: true,
-        },
-      }),
-      new Promise((_, reject) =>
-        setTimeout(() => reject(new Error("Database timeout")), 15000)
-      ),
-    ]);
+    // Query reports from the database. Remove the manual Promise.race timeout
+    // because it can silently cancel the response and leave the DB call
+    // running. Let Prisma/error handling report actual failures instead.
+    const reports = await prisma.report.findMany({
+      where,
+      orderBy: {
+        createdAt: "desc",
+      },
+      select: {
+        id: true,
+        reportId: true,
+        type: true,
+        title: true,
+        description: true,
+        location: true,
+        latitude: true,
+        longitude: true,
+        image: true,
+        status: true,
+        createdAt: true,
+        updatedAt: true,
+      },
+    });
 
     return NextResponse.json(reports);
   } catch (error: any) { //@ts-ignore: Catching unknown error type

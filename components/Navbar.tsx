@@ -17,7 +17,7 @@ export default function Navbar(){
 
     return (
         <>
-            <nav className={`fixed top-0 left-0 w-full border-b text-white border-white/5 
+            <nav className={`sticky top-0 left-0 w-full border-b text-white border-white/5 
                 ${scrolled ? 'bg-black/80' : 'bg-transparent'} 
                 backdrop-blur-xl z-50 transition-all duration-300`}>
                 <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -76,11 +76,11 @@ export default function Navbar(){
                             >
                                 Contact
                             </Link>
-                            <button className="group flex h-9 items-center gap-2 rounded-full 
+                            <button className=" flex h-9 items-center gap-2 rounded-full 
                                 bg-red-500/10 pl-4 pr-5 text-sm font-medium text-red-500 
                                 ring-1 ring-inset ring-red-500/20 transition-all 
                                 hover:bg-red-500/20 hover:scale-105">
-                                <span className="h-1.5 w-1.5 rounded-full bg-red-500 animate-[pulse_1.5s_ease-in-out_infinite]"/>
+                                <span className="h-1.5 w-1.5 rounded-full bg-red-500 animate-[ping_1.5s_ease-in-out_infinite]"/>
                                 Emergency: 100
                             </button>
 

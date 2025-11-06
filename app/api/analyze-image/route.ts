@@ -5,10 +5,15 @@ const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY || "");
 
 export async function POST(request: Request) {
   try {
+   // After initializing GoogleGenerativeAI (using proper API key)
+// const models = await genAI.listModels();
+// console.log(models); // This will show all available models and supported methods
+
+    // console.log("Available models:", models);
     const { image } = await request.json();
     const base64Data = image.split(",")[1];
 
-    const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
+    const model = genAI.getGenerativeModel({ model: "models/gemini-2.5-flash" });
 
     const prompt = `Analyze this emergency situation image and respond in this exact format without any asterisks or bullet points:
         TITLE: Write a clear, brief title

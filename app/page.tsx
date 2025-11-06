@@ -39,7 +39,7 @@ export default function Home() {
             border-sky-500/20 bg-sky-500/10 px-4 text-sm text-sky-400
             transform transition-transform hover:scale-105">
             <svg
-              className="h-4 w-4"
+              className="h-4 w-4 animate-pulse" 
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
